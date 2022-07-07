@@ -1,0 +1,88 @@
+wait(2)-- time callback
+local RayCastHitbox = require(game.ReplicatedStorage.RaycastHitboxV4)
+
+local dano_espada = 5
+local tool = script.Parent
+local handle = tool.Handle
+
+local controle_dano = true
+
+local evento =  game:GetService("ReplicatedStorage").Eventos.coldown_minatos
+
+local animation = tool:FindFirstChild("andarilho")
+local animation_atack = tool:FindFirstChild("atack")
+
+local Hitbox = RayCastHitbox.new(script.Parent.Handle) 
+
+--humanoid lendo a animação
+local track1 = tool.Parent:FindFirstChild("Humanoid"):LoadAnimation(animation) or wait(10000)
+local track2 = tool.Parent:FindFirstChild("Humanoid"):LoadAnimation(animation_atack) or wait(10000)
+
+-- FUNÇÕES
+ 
+local function equipou_item()
+	
+	
+
+	
+end
+
+
+local function desequipou_item()
+	
+	
+	track1:Stop()
+	
+end
+
+
+local function ativou_item()
+	
+	if controle_dano == true  then
+		track2:Play()
+	end
+		
+		
+end	
+
+
+local function desativou_item()
+
+    track2:Stop()
+end
+
+
+Hitbox.Visualizer = true 
+
+-- EVENTOS 
+
+tool.Equipped:Connect(equipou_item )
+
+tool.Unequipped:Connect( desequipou_item)
+
+tool.Activated:Connect( ativou_item)
+
+tool.Deactivated:Connect( desativou_item)
+
+script.Parent.Activated:Connect(function()
+	
+	Hitbox:HitStart(.8)
+end)
+
+Hitbox.OnHit:Connect(function(Part, Humanoid)
+	if Humanoid and Humanoid ~= script.Parent.Parent.Humanoid then
+		Humanoid:TakeDamage(dano_espada)
+		
+		
+		dano_espada = 0 
+		controle_dano = false -- ele vai controlar junto com o coldown a linha 40 do codigo
+
+		local plr = game:GetService("Players"):FindFirstChild(tool.Parent.Name)
+		evento:FireClient(plr)
+		wait(2) -- CLODOWN ANIMAÇÃO E DANO
+		controle_dano = true
+		dano_espada = 5
+	end
+	
+	
+end)
