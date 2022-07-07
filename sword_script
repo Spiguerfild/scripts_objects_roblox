@@ -1,7 +1,7 @@
 wait(2)
 local evento =  game:GetService("ReplicatedStorage").Eventos.coldown_minatos
-local cd_minat = game:GetService("StarterGui").cd_minatos.Frame
-local RayCastHitbox = require(game.ReplicatedStorage.RaycastHitboxV4)
+local cd_minat = game:GetService("StarterGui").cd_minatos.Frame --tempo de espera entre hit
+local RayCastHitbox = require(game.ReplicatedStorage.RaycastHitboxV4) 
 
 local dano_espada = 50
 local tool = script.Parent
@@ -9,11 +9,11 @@ local handle = tool.Handle
 local controle_dano = true
 local controle_hit = 0
 
-local lamina = tool.lamina
+local lamina = tool.lamina -- identifica parte superior da espada
 
-local coldown_image = false
+local coldown_image = false -- imagem de segundos GUI(interface grafica de usuario)
 
-local animation = tool:FindFirstChild("andarilho")
+local animation = tool:FindFirstChild("andarilho") 
 
 local Hitbox = RayCastHitbox.new(script.Parent.lamina) 
 
