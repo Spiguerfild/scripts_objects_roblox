@@ -1,3 +1,4 @@
+--client 
 local button = script.Parent
 local event = game:GetService("ReplicatedStorage"):FindFirstChild("level_one_lobby")
 
