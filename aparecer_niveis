@@ -1,0 +1,9 @@
+--client
+local frame = script.Parent
+local evento = game:GetService("ReplicatedStorage"):FindFirstChild("niveis_lobby")
+
+evento.OnClientEvent:Connect(function()
+	frame.Visible = true
+end)
+
+--mostra na tela do jogador a interface dos niveis existentes
