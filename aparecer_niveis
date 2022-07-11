@@ -6,4 +6,4 @@ evento.OnClientEvent:Connect(function()
 	frame.Visible = true
 end)
 
---mostra na tela do jogador a interface dos niveis existentes
+--mostra na tela do jogador a interface dos niveis existentes quando o evento for ativado no server por x player
