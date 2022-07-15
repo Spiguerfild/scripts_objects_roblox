@@ -1,9 +1,13 @@
 --client
-local frame = script.Parent
+local frame = script.Parent.Parent
 local evento = game:GetService("ReplicatedStorage"):FindFirstChild("niveis_lobby")
+local buton_x = frame.Frame.button_x
 
 evento.OnClientEvent:Connect(function()
 	frame.Visible = true
 end)
 
---mostra na tela do jogador a interface dos niveis existentes quando o evento for ativado no server por x player
+buton_x.MouseButton1Click:Connect(function()
+	frame.Visible = false
+end)
+
