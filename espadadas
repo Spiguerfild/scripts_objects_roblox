@@ -1,0 +1,13 @@
+--servidor
+local event = game:GetService("ReplicatedStorage").espadadas
+local espada = script.Parent
+local animation = espada.Animation
+
+
+event.OnServerEvent:Connect(function()
+	if (espada.Parent.one.Value == false) and script.Parent.one~=nil then
+		local humanoid = espada.Parent.Humanoid
+		humanoid:LoadAnimation(animation)
+		animation:play()
+	end
+end)
